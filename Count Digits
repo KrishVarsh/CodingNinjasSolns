@@ -1,0 +1,18 @@
+Count Digits
+
+public class Solution {
+    public static int countDigits(int n){
+        // Write your code here.
+       int temp=n,s=0,c=0;
+       while(temp!=0){
+           s=temp%10;
+           if(s!=0 && n%s==0){
+               c++;
+               
+           }
+           temp=temp/10;
+
+       }
+       return c;
+    }
+}
