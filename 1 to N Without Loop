@@ -1,0 +1,28 @@
+1 to N Without Loop
+// public class Solution {
+//     public static int printNos(int n) {
+//         // Write Your Code Here
+//         func(1,n);
+        
+//     }
+//     static void func(int i,int n){
+//         if(i>n)
+//         return;
+//         System.out.print(i);
+//         func(i+1,n);
+//     }
+// }
+
+public class Solution {
+    public static int[] printNos(int x) {
+        // Write Your Code Here.
+        int a[]=new int[x];
+        call(a,x);
+        return a;
+    }
+    static void call(int[] a,int n){
+        if(n>1) call(a,n-1);
+        a[n-1]=n;
+
+    }
+}
