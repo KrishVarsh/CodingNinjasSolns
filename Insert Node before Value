@@ -1,0 +1,54 @@
+Insert Node before Value
+
+/****************************************************************
+
+ Following is the linkedList class structure:
+
+ class Node
+ {
+     public int data;
+     public Node next;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+     }
+
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+     }
+
+     Node(int data, Node next)
+     {
+         this.data = data;
+         this.next = next;
+     }
+ }
+
+ *****************************************************************/
+
+
+public class Solution {
+    public static Node insertBeforeValue(Node head, int x, int val) {
+        // Write Your Code Here.
+        if (head==null)
+            return null;
+        if (head.data==val)
+            return new Node(x,head);
+        else{
+            Node temp=head;
+            while(temp.next!=null){
+                if(temp.next.data==val){
+                    Node po=new Node(x,temp.next);
+                    temp.next=po;
+                    break;
+                }
+                temp=temp.next;
+            }
+        }
+        return head;
+    }
+}
