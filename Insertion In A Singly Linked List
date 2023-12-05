@@ -1,0 +1,48 @@
+ Insertion In A Singly Linked List
+
+import java.util.*;
+import java.io.*;
+/************************************************************
+
+ Following is the linkedList class structure:
+
+ class Node<T> {
+ T data;
+ Node<T> next;
+
+ public Node(T data) {
+ this.data = data;
+ }
+ }
+
+ ************************************************************/
+
+public class Solution {
+
+    static Node<Integer> insert(Node<Integer> head, int n, int k, int val) {
+        // Write your code here.
+        if (head == null) {
+            if (k == 1)
+                return new Node<>(val);
+            else
+                return head;
+        } else {
+            if (k == 1)
+                return new Node<>(val, head);
+
+            int ct = 0;
+            Node<Integer> temp = head;
+            while (temp != null) {
+                ct++;
+                if (ct == k - 1) {
+                    Node<Integer> no = new Node<>(val, temp.next);
+                    temp.next = no;
+                    break;
+                }
+                temp = temp.next;
+            }
+        }
+
+        return head;
+    }
+}
