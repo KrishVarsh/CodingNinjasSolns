@@ -1,0 +1,26 @@
+Palindrome number
+public class Solution {
+    public static boolean palindromeNumber(int x){
+        // Write your code here.
+ String y = Integer.toString(x);
+        int n = y.length();
+
+        for (int onon = 0; onon < n / 2; onon++) {
+            if (y.charAt(onon) != y.charAt(n - onon - 1)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+// public boolean isPalindrome(int x) {
+//     if (x<0 || (x!=0 && x%10==0)) return false;
+//     int rev = 0;
+//     while (x>rev){
+//     	rev = rev*10 + x%10;
+//     	x = x/10;
+//     }
+//     return (x==rev || x==rev/10);
+// }
