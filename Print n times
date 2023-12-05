@@ -1,0 +1,15 @@
+Print n times
+import java.util.List;
+public class Solution {
+    public static void printNtimes(int n){
+        // Write your code here.
+        func(1,n);
+       
+    }
+    static  void func(int i,int n){
+        if(i>n)
+        return;
+        System.out.print("Coding Ninjas ");
+        func(i+1,n);
+    }
+}
