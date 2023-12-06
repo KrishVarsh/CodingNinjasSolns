@@ -1,0 +1,16 @@
+ N to 1 without loop
+public class Solution
+{
+    public static int[] printNos(int x) {
+        // Write Your Code Here
+        int[] arr= new int[x];
+        return call(arr,x,x);
+    }
+    static int[] call(int[] arr,int x,int n){
+        if(x==0){
+            return arr;
+        }
+        arr[n-x]=x;
+        return call(arr,x-1,n);
+    }
+}
