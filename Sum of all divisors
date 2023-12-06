@@ -1,0 +1,14 @@
+Sum of all divisors
+public class Solution {
+    public static int sumOfAllDivisors(int n){
+        // Write your code here.
+        int r=0;
+        for(int i=1;i<=n;i++){
+            
+                r=r+(n/i)*i;
+                
+            
+        }
+        return r;
+    }
+}
