@@ -1,0 +1,102 @@
+Delete K-th Node from Doubly Linked List
+/****************************************************************
+
+ Following is the class structure of the linked list:
+
+ class Node
+ {
+     public int data;
+     public Node next;
+     public Node prev;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+         this.prev = null;
+     }
+
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+         this.prev = null;
+     }
+
+     Node(int data, Node next, Node prev)
+     {
+         this.data = data;
+         this.next = next;
+         this.prev = prev;
+     }
+ }
+
+ *****************************************************************/
+
+public class Solution {
+    public static Node deleteNode(Node head, int k) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+
+        int ct = 0;
+        Node temp = head;
+        while (temp != null) {
+            ct++;
+            if (ct == k)
+                break;
+
+            temp = temp.next;
+        }
+
+        if (temp == null) {
+            return head; // Node not found at position k
+        }
+
+        Node previ = temp.prev;
+        Node front = temp.next;
+
+        if (previ == null && front == null) {
+            return null;
+        } else if (previ == null) {
+            return deleteHead(head);
+        } else if (front == null) {
+            return deleteLastNode(head);
+        }
+
+        previ.next = front;
+        front.prev = previ;
+
+        return head;
+    }
+
+    static Node deleteHead(Node head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+
+        Node temp = head;
+        head = head.next;
+        head.prev = null;
+        temp.next = null;
+
+        return head;
+    }
+
+    static Node deleteLastNode(Node head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+
+        Node valu = head;
+        while (valu.next != null) {
+            valu = valu.next;
+        }
+
+        Node newValu = valu.prev;
+        newValu.next = null;
+        valu.prev = null;
+
+        return head;
+    }
+}
