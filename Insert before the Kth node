@@ -1,0 +1,67 @@
+ Insert before the Kth node
+/************************************************************
+
+ Following is the linkedList class structure:
+
+ class Node {
+    int data;
+    Node next, prev;
+
+    public Node(int data) {
+        this.data = data;
+        next = prev = null;
+    }
+ }
+
+ ************************************************************/
+
+public class Solution {
+
+    static Node insert(Node head, int k, int val) {
+        // Write your code here.
+        Node temp = head;
+        int ct = 0;
+
+        // Check if the list is empty, i.e., head is null
+        if (head == null) {
+            head = new Node(val);
+            return head;
+        }
+
+        // Check if insertion is at the beginning (head) of the list
+        if (k == 1) {
+            Node no = new Node(val);
+            no.next = head;
+            head.prev = no;
+            head = no;
+            return head;
+        }
+
+        while (temp != null) {
+            ct++;
+            if (ct == k) break;
+            temp = temp.next;
+        }
+
+        // Check if insertion is at the end (tail) of the list
+        if (temp == null) {
+            Node no = new Node(val);
+            temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = no;
+            no.prev = temp;
+            return head;
+        }
+
+        Node previ = temp.prev;
+        Node no = new Node(val);
+        no.next = temp;
+        no.prev = previ;
+        previ.next = no;
+        temp.prev = no;
+
+        return head;
+    }
+}
