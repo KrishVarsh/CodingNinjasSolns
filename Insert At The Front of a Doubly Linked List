@@ -1,0 +1,49 @@
+ Insert At The Front of a Doubly Linked List
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node
+ {
+     public int value;
+     public Node next;
+     public Node prev;
+
+     Node()
+     {
+         this.value = 0;
+         this.next = null;
+         this.prev = null;
+     }
+
+     Node(int value)
+     {
+         this.value = value;
+         this.next = null;
+         this.prev = null;
+     }
+
+     Node(int value, Node next, Node prev)
+     {
+         this.value = value;
+         this.next = next;
+         this.prev = prev;
+     }
+ }
+
+ *****************************************************************/
+
+
+public class Solution {
+    public static Node insertAtFront(Node head, int k) {
+        // Write Your Code Here.
+        
+        Node no= new Node(k);
+        if(head==null){
+            return no;
+        }
+        no.next=head;
+        head.prev=no;
+        return no;
+    }
+}
