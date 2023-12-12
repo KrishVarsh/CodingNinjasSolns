@@ -1,4 +1,3 @@
-//Reverse Linked List
 /****************************************************************
 
  Following is the class structure of the Node class:
@@ -30,16 +29,26 @@ public class Solution
 {
     public static Node reverseLinkedList(Node head)
     {
-        // Write your code here.
-        Node temp=head;
-        Node last=null;
-        while(temp!=null){
-            Node front=temp.next;
-            temp.next=last;
-            last=temp;
-            temp=front;
+        // // Write your code here.
+        // Node temp=head;
+        // Node last=null;
+        // while(temp!=null){
+        //     Node front=temp.next;
+        //     temp.next=last;
+        //     last=temp;
+        //     temp=front;
 
+        // }
+        // return last;
+
+        //Recursive
+        if(head==null||head.next==null){
+            return head;
         }
-        return last;
+        Node nh=reverseLinkedList(head.next);
+        Node front= head.next;
+        front.next=head;
+        head.next=null;
+        return nh;
     }
 }
